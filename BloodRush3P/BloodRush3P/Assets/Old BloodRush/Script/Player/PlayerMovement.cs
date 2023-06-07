@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit slopeHit;
 
+    //Animator anim;
+
     private bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 0.1f))
@@ -83,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        //anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -153,8 +156,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
+        if(horizontalMovement == 0 && verticalMovement == 0)
+        {
+            //anim.SetInteger("RandomIdle", Random.Range(0, 3));
+        }
+
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     }
+
 
     void MovePlayer()
     {
