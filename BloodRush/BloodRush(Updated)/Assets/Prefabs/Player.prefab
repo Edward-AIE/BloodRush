@@ -178,9 +178,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 1
 --- !u!114 &6124697057506180754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +221,8 @@ MonoBehaviour:
     m_Bits: 64
   wallrun: {fileID: 9024492671959642293}
   isGrounded: 0
+  canDash: 0
+  isSliding: 0
   canJump: 0
   hasJumped: 0
 --- !u!114 &6124697057506180749
@@ -237,7 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 100
   sensY: 100
-  cam: {fileID: 0}
   orientation: {fileID: 5212476928876983272}
   wallrun: {fileID: 9024492671959642293}
 --- !u!114 &9024492671959642293
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 324
-  airDashForceMulti: 2
+  airDashForceMulti: 1.8
   groundDashForceMulti: 7
   enemy:
     serializedVersion: 2

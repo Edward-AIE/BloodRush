@@ -75,6 +75,7 @@ public class DashToEnemy : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 rb.AddForce(direction * dashForce, ForceMode.Impulse);
                 temp.ImageOff();
+                NoDash();
             }
         }
         
@@ -106,6 +107,11 @@ public class DashToEnemy : MonoBehaviour
         if (timeSinceDash >= seconds)
         {
             timeSinceDash = seconds;
+        }
+
+        if (timeSinceDash < seconds)
+        {
+            NoDash();
         }
     }
 

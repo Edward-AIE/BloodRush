@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void SlideJump()
     {
-        rb.AddForce(transform.up + orientation.forward * slideJumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up + rb.velocity.normalized * slideJumpForce, ForceMode.Impulse);
     }
 
     void Dash()
