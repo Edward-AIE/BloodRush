@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float doubleJumpForce;
     CharacterController cc;
     Animator anim;
+    private Camera cam;
 
     [Header("Sprinting")]
     [SerializeField] float walkSpeed;
@@ -18,12 +19,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float acceleration = 10f;
 
     [Header("Sliding")]
-    [SerializeField] Transform cameraPosition;
-    [SerializeField] Transform nonSlideCamPosition;
-    [SerializeField] Transform slideCamPosition;
     [SerializeField] float camPosChangeTime;
     [SerializeField] float slideDrag;
-    [SerializeField] float slideCamTilt;
     [SerializeField] float slideJumpForce;
 
     [Header("Drag")]
@@ -90,11 +87,13 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
         anim = GetComponentInChildren<Animator>();
         cc = GetComponent<CharacterController>();
+        cam = Camera.main;
     }
 
     private void Update()
     {
         isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, 1, 0), groundDistance, groundLayer);
+        orientation.rotation = Quaternion.Euler(0, cam.transform.rotation.y, 0);
         
         if (canDash && !isGrounded)
         {
@@ -273,22 +272,10 @@ public class PlayerMovement : MonoBehaviour
     void BeginSlide()
     {
         isSliding = true;
-
-        cameraPosition.position = Vector3.Lerp(cameraPosition.position, slideCamPosition.position, camPosChangeTime * Time.deltaTime);
-        if(rb.velocity != new Vector3(0, 0, 0))
-        {
-            wallrun.tilt = Mathf.Lerp(wallrun.tilt, slideCamTilt, 20 * Time.deltaTime);
-        }
     }
 
     void EndSlide()
     {
         isSliding = false;
-
-        cameraPosition.position = Vector3.Lerp(cameraPosition.position, nonSlideCamPosition.position, camPosChangeTime * Time.deltaTime);
-        if (rb.velocity != new Vector3(0, 0, 0))
-        {
-            wallrun.tilt = Mathf.Lerp(wallrun.tilt, 0, 20 * Time.deltaTime);
-        }
     }
 }

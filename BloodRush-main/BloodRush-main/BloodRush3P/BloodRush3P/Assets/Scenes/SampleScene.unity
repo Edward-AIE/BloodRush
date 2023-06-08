@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386673448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: -5}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -525,7 +525,6 @@ GameObject:
   - component: {fileID: 1821707922}
   - component: {fileID: 1821707923}
   - component: {fileID: 1821707926}
-  - component: {fileID: 1821707927}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -579,50 +578,6 @@ CapsuleCollider:
   m_Height: 1.9877503
   m_Direction: 1
   m_Center: {x: 0, y: 1.0061249, z: 0}
---- !u!114 &1821707927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821707917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9de7029872113043b62b070504e8cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 6
-  jumpForce: 0
-  doubleJumpForce: 0
-  walkSpeed: 0
-  sprintSpeed: 0
-  acceleration: 10
-  cameraPosition: {fileID: 0}
-  nonSlideCamPosition: {fileID: 0}
-  slideCamPosition: {fileID: 0}
-  camPosChangeTime: 0
-  slideDrag: 0
-  slideCamTilt: 0
-  slideJumpForce: 0
-  groundDrag: 6
-  airDrag: 2
-  airMultiplier: -1
-  dashForce: 0
-  jumpKey: 32
-  sprintKey: 304
-  dashKey: 304
-  slideKey: 306
-  orientation: {fileID: 0}
-  groundDistance: 0.4
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  wallrun: {fileID: 0}
-  isGrounded: 0
-  canDash: 0
-  isSliding: 0
-  canJump: 0
-  hasJumped: 0
 --- !u!1 &9171101349973764
 GameObject:
   m_ObjectHideFlags: 0
