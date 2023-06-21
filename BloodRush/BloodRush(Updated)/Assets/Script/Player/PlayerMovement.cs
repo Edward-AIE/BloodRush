@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Animator anim;
+    int _xVelHash;
+    int _yVelHash;
+
     [Header("Movement")]
     public float moveSpeed = 6f;
     public float jumpForce;
     public float doubleJumpForce;
+
+    
 
     [Header("Sprinting")]
     [SerializeField] float walkSpeed;
@@ -83,6 +89,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        _xVelHash = Animator.StringToHash("X_Velocity");
+        _yVelHash = Animator.StringToHash("Y_Velocity");
     }
 
     private void Update()
