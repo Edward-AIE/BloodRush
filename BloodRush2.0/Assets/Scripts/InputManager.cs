@@ -24,7 +24,7 @@ namespace BloodRush.Manager
 
         private void Awake()
         {
-            
+            HideCursor();
             _currentMap = PlayerInput.currentActionMap;
             _moveAction = _currentMap.FindAction("Move");
             _lookAction = _currentMap.FindAction("Look");

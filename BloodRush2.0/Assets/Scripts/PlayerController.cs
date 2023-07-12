@@ -26,6 +26,9 @@ namespace BloodRush.PlayerControl
         private const float _walkSpeed = 2f;
         private const float _runSpeed = 6f;
         private Vector2 _currentVelocity;
+
+
+
         void Start()
         {
             _hasAnimator = TryGetComponent<Animator>(out _animator);
@@ -50,18 +53,16 @@ namespace BloodRush.PlayerControl
             float targetSpeed = _inputManager.Run ? _runSpeed : _walkSpeed;
             if (_inputManager.Move == Vector2.zero) targetSpeed = 0.1f;
 
-            _currentVelocity.x = Mathf.Lerp(_currentVelocity.x, _inputManager.Move.x * targetSpeed, Time.fixedDeltaTime);
-            _currentVelocity.y = Mathf.Lerp(_currentVelocity.y, _inputManager.Move.y * targetSpeed, Time.fixedDeltaTime);
+            _currentVelocity.x = _inputManager.Move.x * targetSpeed;  //Mathf.Lerp(_currentVelocity.x, _inputManager.Move.x * targetSpeed, Time.fixedDeltaTime);
+            _currentVelocity.y = _inputManager.Move.y * targetSpeed; //Mathf.Lerp(_currentVelocity.y, _inputManager.Move.y * targetSpeed, Time.fixedDeltaTime);
 
-            var xVelDifference = _currentVelocity.x = _playerRigidBody.velocity.x;
-            var zVelDifference = _currentVelocity.y = _playerRigidBody.velocity.z;
+            var xVelDifference = _currentVelocity.x;// = _playerRigidBody.velocity.x;
+            var zVelDifference = _currentVelocity.y;// = _playerRigidBody.velocity.z;
 
             _playerRigidBody.AddForce(transform.TransformVector(new Vector3(xVelDifference, 0, zVelDifference)), ForceMode.VelocityChange);
 
             _animator.SetFloat(_xVelHash, _currentVelocity.x);
             _animator.SetFloat(_yVelHash, _currentVelocity.y);
-
-
         }
 
         private void CamMovements()
