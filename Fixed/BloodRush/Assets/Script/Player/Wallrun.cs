@@ -13,7 +13,6 @@ public class Wallrun : MonoBehaviour
     [SerializeField] float minimumJumpHeight = 1.5f;
     [SerializeField] float wallRunGravity;
     [SerializeField] float wallRunJumpForce;
-    [SerializeField] float velReq;
 
     [Header("Camera")]
     [SerializeField] Camera cam;
@@ -37,7 +36,7 @@ public class Wallrun : MonoBehaviour
     
     bool CanWallRun()
     {
-        if (!Physics.Raycast(transform.position, Vector3.down, minimumJumpHeight) && rb.velocity.magnitude > velReq)
+        if (!Physics.Raycast(transform.position, Vector3.down, minimumJumpHeight))
         {
             return true;
         }
