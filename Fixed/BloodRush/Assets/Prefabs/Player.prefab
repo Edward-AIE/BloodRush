@@ -407,7 +407,7 @@ MonoBehaviour:
   groundDashForceMulti: 7
   enemy:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
   seconds: 3
   timeSinceDash: 0
 --- !u!136 &4097580693170641893
