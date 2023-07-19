@@ -52,11 +52,12 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool isSliding;
     [HideInInspector] public bool canJump;
     [HideInInspector] public bool hasJumped;
+    [HideInInspector] public bool sprinting;
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
 
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
 
     RaycastHit slopeHit;
 
@@ -199,10 +200,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(sprintKey) && isGrounded)
         {
+            sprinting = true;
             moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
         }
         else
         {
+            sprinting = false;
             moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
         }
     }
