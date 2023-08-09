@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        healthbar.UpdateHealthBar(health, _maxHealth);
+        //healthbar.UpdateHealthBar(health, _maxHealth);
     }
 
     public void TakeDamage(float damageAmout)
