@@ -27,6 +27,8 @@ public class Wallrun : MonoBehaviour
     bool wallLeft = false;
     bool wallRight = false;
 
+    bool done = false;
+
     bool wallRunning;
 
     RaycastHit leftWallHit;
@@ -93,6 +95,12 @@ public class Wallrun : MonoBehaviour
         playerMovement.hasJumped = false;
         wallRunning = true;
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallFov, wallFovTime * Time.deltaTime);
+        
+        if (!done)
+        {
+            rb.AddForce(cam.transform.forward * 5, ForceMode.Impulse);
+            done = true;
+        }
 
         if (wallLeft)
         {
@@ -125,6 +133,7 @@ public class Wallrun : MonoBehaviour
         rb.useGravity = true;
         playerMovement.canJump = true;
         wallRunning = false;
+        done = false;
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, wallFovTime * Time.deltaTime);
         tilt = Mathf.Lerp(tilt, 0, camTiltTime * Time.deltaTime);
     }

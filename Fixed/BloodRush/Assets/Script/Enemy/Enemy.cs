@@ -31,14 +31,11 @@ public class Enemy : MonoBehaviour
         dashConfirm.enabled = false;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         ImageOff();
     }
 
-    // Update is called once per frame
     void Update()
     {
         healthbar.UpdateHealthBar(health, _maxHealth);
@@ -46,7 +43,6 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damageAmout)
     {
-
         health -= damageAmout;
         if (health <= 0)
         {
@@ -56,6 +52,6 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-
+        Destroy(gameObject);
     }
 }
