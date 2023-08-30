@@ -11,12 +11,15 @@ public class Shooting : MonoBehaviour
     public KeyCode shoot = KeyCode.Mouse0;
     Animator animator;
     RaycastHit hit;
+    Transform muzzleLocation;
+    public GameObject muzzleFlash;
 
     private void Start()
     {
         cam = Camera.main.transform;
         shootable = true;
         animator = GetComponentInChildren<Animator>();
+        muzzleLocation = GameObject.Find("Muzzle Location").GetComponent<Transform>();
     }
 
     private void Update()
@@ -36,6 +39,7 @@ public class Shooting : MonoBehaviour
             enemy.TakeDamage(10);
             enemyRb.AddForce(cam.forward * shotForce, ForceMode.Impulse);
         }
+        Instantiate(muzzleFlash, muzzleLocation.transform.position, muzzleLocation.transform.rotation, muzzleLocation);
         animator.SetTrigger("Shot Fired");
         StartCoroutine(BetweenShots());
     }

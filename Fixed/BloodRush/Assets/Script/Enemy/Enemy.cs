@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    GameManager gameManager;
     public float _maxHealth;
     public float health;
     [SerializeField] private FloatingHealthbar healthbar;
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        gameManager.EnemyKilled();
         Destroy(gameObject);
     }
 }
